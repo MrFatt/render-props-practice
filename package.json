@@ -1,0 +1,22 @@
+{
+  "name": "simply-react-accordion",
+  "version": "1.0.0",
+  "description": "This sandbox is for a demo in https://simply-react.netlify.com/",
+  "keywords": [],
+  "main": "src/index.js",
+  "dependencies": {
+    "emotion": "9.2.6",
+    "react": "16.4.2",
+    "react-dom": "16.4.2",
+    "react-emotion": "9.2.6",
+    "react-pose": "2.2.0",
+    "react-scripts": "1.1.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
