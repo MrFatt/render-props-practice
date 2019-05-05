@@ -12,11 +12,13 @@ import {
   TabButtons,
 } from '../shared'
 
-const Basic = ({items}) => {
+const Basic = ({items, above}) => {
   const [openIndexes, setOpenIndexes] = useState([])
+
   const handleItemClick = index => {
-    openIndexes.includes(index)? setOpenIndexes(openIndexes.filter(i=> i !== index)) :
-    setOpenIndexes([...openIndexes, index])
+    openIndexes.includes(index)
+      ? setOpenIndexes(openIndexes.filter(i => i !== index))
+      : setOpenIndexes([...openIndexes, index])
   }
 
   return (
@@ -28,7 +30,13 @@ const Basic = ({items}) => {
             onClick={() => handleItemClick(index)}
           >
             {item.title}{' '}
-            <span>{openIndexes.includes(index) ? '👇' : '👈'}</span>
+            <span>
+              {openIndexes.includes(index)
+                ? above
+                  ? '👆'
+                  : '👇'
+                : '👈'}
+            </span>
           </AccordionButton>
           <AccordionContents isOpen={openIndexes.includes(index)}>
             {item.contents}

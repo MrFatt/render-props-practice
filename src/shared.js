@@ -21,10 +21,11 @@ const AccordionButton = styled('button')(
       backgroundColor: 'rgba(255, 255, 255, 0.4)',
     },
   },
-  ({isOpen}) =>
+  ({isOpen, above}) =>
     isOpen
       ? {
           backgroundColor: 'rgba(255, 255, 255, 0.2)',
+          order: above ? 2 : 1,
         }
       : null,
 )
