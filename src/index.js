@@ -14,6 +14,8 @@ import {
   TabButtons,
 } from './shared'
 
+import Basic from './basic';
+
 function Accordion({items, ...props}) {
   return (
     <BaseAccordion {...props}>
@@ -124,7 +126,7 @@ function App() {
         marginTop: 60,
       }}
     >
-      <Accordion items={items} />
+      <Basic items={items} />
     </div>
   )
 }
