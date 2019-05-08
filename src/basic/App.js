@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {AccordionButton, AccordionItem, AccordionContents} from './shared'
 
-const Basic = ({items, above, right, left}) => {
+const Basic = ({items, position}) => {
   const [openIndexes, setOpenIndexes] = useState([])
 
   const handleItemClick = index => {
@@ -9,6 +9,10 @@ const Basic = ({items, above, right, left}) => {
       ? setOpenIndexes(openIndexes.filter(i => i !== index))
       : setOpenIndexes([...openIndexes, index])
   }
+
+  const above = 'above' === position
+  const left = 'left' === position
+  const right = 'right' === position
 
   return (
     <div
@@ -22,7 +26,9 @@ const Basic = ({items, above, right, left}) => {
       {items.map((item, index) => (
         <AccordionItem
           key={item.title}
-          direction={right || left ? 'horizontal' : 'vertical'}
+          direction={
+            ['right', 'left'].includes(position) ? 'horizontal' : 'vertical'
+          }
         >
           <AccordionButton
             isOpen={openIndexes.includes(index)}
@@ -40,7 +46,7 @@ const Basic = ({items, above, right, left}) => {
                   : right
                   ? '👉'
                   : '👇'
-                : left || right
+                : ['right', 'left'].includes(position)
                 ? '👆'
                 : '👈'}
             </span>
