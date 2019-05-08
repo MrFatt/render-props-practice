@@ -28,17 +28,14 @@ const Basic = ({items, above}) => {
           <AccordionButton
             isOpen={openIndexes.includes(index)}
             onClick={() => handleItemClick(index)}
+            above={above}
           >
             {item.title}{' '}
             <span>
-              {openIndexes.includes(index)
-                ? above
-                  ? '👆'
-                  : '👇'
-                : '👈'}
+              {openIndexes.includes(index) ? (above ? '👆' : '👇') : '👈'}
             </span>
           </AccordionButton>
-          <AccordionContents isOpen={openIndexes.includes(index)}>
+          <AccordionContents above={above} isOpen={openIndexes.includes(index)}>
             {item.contents}
           </AccordionContents>
         </AccordionItem>
