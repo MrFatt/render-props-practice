@@ -21,9 +21,9 @@ const AccordionButton = styled('button')(
       backgroundColor: 'rgba(255, 255, 255, 0.4)',
     },
   },
-  ({isOpen, above}) => ({
+  ({isOpen, above, left}) => ({
     backgroundColor: isOpen ? 'rgba(255, 255, 255, 0.2)' : null,
-    order: above ? 2 : 1,
+    order: above || left ? 2 : 1,
   }),
 )
 
@@ -32,14 +32,14 @@ const PoseAccordionContents = posed.div({
   closed: {maxHeight: 0},
 })
 
-function AccordionContents({isOpen, above, ...props}) {
+function AccordionContents({isOpen, above, left, ...props}) {
   return (
     <PoseAccordionContents
       pose={isOpen ? 'open' : 'closed'}
       {...css({
         overflowY: 'hidden',
         textAlign: 'justify',
-        order: above ? 1 : 2,
+        order: above || left ? 1 : 2,
       })}
       {...props}
     />
