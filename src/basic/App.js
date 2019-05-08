@@ -1,15 +1,24 @@
 import React, {useState} from 'react'
 import {AccordionButton, AccordionItem, AccordionContents} from './shared'
 
-const Basic = ({items, position, single}) => {
+const Basic = ({items, position, single, preventClose}) => {
   const [openIndexes, setOpenIndexes] = useState([])
 
   const handleItemClick = index => {
-    openIndexes.includes(index)
-      ? setOpenIndexes(openIndexes.filter(i => i !== index))
-      : single
-      ? setOpenIndexes([index])
-      : setOpenIndexes([...openIndexes, index])
+    console.log(preventClose);
+    if (openIndexes.includes(index)) {
+      if (preventClose && openIndexes.length === 1) {
+        return
+      } else {
+        setOpenIndexes(openIndexes.filter(i => i !== index))
+      }
+    } else {
+      if (single) {
+        setOpenIndexes([index])
+      } else {
+        setOpenIndexes([...openIndexes, index])
+      }
+    }
   }
 
   const above = 'above' === position
