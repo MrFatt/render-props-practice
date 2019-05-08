@@ -35,7 +35,7 @@ const Basic = ({items, above, left}) => {
               {openIndexes.includes(index) ? (above ? '👆' : '👇') : '👈'}
             </span>
           </AccordionButton>
-          <AccordionContents above={above} isOpen={openIndexes.includes(index)}>
+          <AccordionContents isOpen={openIndexes.includes(index)} above={above}>
             {item.contents}
           </AccordionContents>
         </AccordionItem>
