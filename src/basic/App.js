@@ -3,16 +3,9 @@ import {
   AccordionButton,
   AccordionItem,
   AccordionContents,
-  single,
-  preventClose,
-  combineReducers,
-  TabButton,
-  TabItem,
-  TabItems,
-  TabButtons,
-} from '../shared'
+} from './shared'
 
-const Basic = ({items, above}) => {
+const Basic = ({items, above, left}) => {
   const [openIndexes, setOpenIndexes] = useState([])
 
   const handleItemClick = index => {
@@ -22,7 +15,14 @@ const Basic = ({items, above}) => {
   }
 
   return (
-    <div>
+    <div
+      style={{
+        maxWidth: 400,
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        marginTop: 60,
+      }}
+    >
       {items.map((item, index) => (
         <AccordionItem key={item.title} direction="vertical">
           <AccordionButton
