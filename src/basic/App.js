@@ -1,11 +1,18 @@
 import React, {useState} from 'react'
-import {AccordionButton, AccordionItem, AccordionContents} from './shared'
+import {
+  AccordionButton,
+  AccordionItem,
+  AccordionContents,
+  TabItems,
+  TabItem,
+  TabButtons,
+  TabButton
+} from './shared'
 
-const Basic = ({items, position, single, preventClose}) => {
+const Basic = ({items, position, single, preventClose, tabs = false}) => {
   const [openIndexes, setOpenIndexes] = useState([])
 
   const handleItemClick = index => {
-    console.log(preventClose);
     if (openIndexes.includes(index)) {
       if (preventClose && openIndexes.length === 1) {
         return
@@ -24,6 +31,42 @@ const Basic = ({items, position, single, preventClose}) => {
   const above = 'above' === position
   const left = 'left' === position
   const right = 'right' === position
+
+  if (tabs === true) {
+    return (
+      <div
+        style={{
+          maxWidth: 400,
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          marginTop: 60,
+        }}
+      >
+        <TabItems>
+          {items.map((item, index) => (
+            <TabItem
+              key={index}
+              position="above"
+              isOpen={openIndexes.includes(index)}
+            >
+              {item.contents}
+            </TabItem>
+          ))}
+        </TabItems>
+        <TabButtons>
+            {items.map((item, index) => (
+              <TabButton
+                key={item.title}
+                isOpen={openIndexes.includes(index)}
+                onClick={() => handleItemClick(index)}
+              >
+                {item.title}
+              </TabButton>
+            ))}
+          </TabButtons>
+      </div>
+    )
+  }
 
   return (
     <div

@@ -23,7 +23,7 @@ const AccordionButton = styled('button')(
   },
   ({isOpen, above, left}) => ({
     backgroundColor: isOpen ? 'rgba(255, 255, 255, 0.2)' : null,
-    order: above || left ? 2 : 1,
+    order: above || left ? 1 : 0,
   }),
 )
 
@@ -39,7 +39,7 @@ function AccordionContents({isOpen, above, left, ...props}) {
       {...css({
         overflowY: 'hidden',
         textAlign: 'justify',
-        order: above || left ? 1 : 2,
+        order: above || left ? 0 : 1,
       })}
       {...props}
     />
