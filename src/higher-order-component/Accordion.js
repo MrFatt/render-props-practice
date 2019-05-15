@@ -3,10 +3,6 @@ import {
   AccordionButton,
   AccordionItem,
   AccordionContents,
-  TabItems,
-  TabItem,
-  TabButtons,
-  TabButton,
 } from '../shared'
 
 function AccordionUI({items, openIndexes, handleItemClick}) {
@@ -21,9 +17,6 @@ function AccordionUI({items, openIndexes, handleItemClick}) {
     >
       {items.map((item, index) => (
         <AccordionItem key={item.title} direction="vertical">
-          <AccordionContents isOpen={openIndexes.includes(index)}>
-            {item.contents}
-          </AccordionContents>
           <AccordionButton
             isOpen={openIndexes.includes(index)}
             onClick={() => handleItemClick(index)}
@@ -31,6 +24,9 @@ function AccordionUI({items, openIndexes, handleItemClick}) {
             {item.title}{' '}
             <span>{openIndexes.includes(index) ? '👇' : '👈'}</span>
           </AccordionButton>
+          <AccordionContents isOpen={openIndexes.includes(index)}>
+            {item.contents}
+          </AccordionContents>
         </AccordionItem>
       ))}
     </div>

@@ -11,7 +11,6 @@ const withAccordion = ComposedComponent => {
     internalSetState(changes) {
       this.setState(
         state => {
-          console.log(this.props);
           const changesObject =
             typeof changes === 'function' ? changes(state) : changes
           return this.props.stateReducer(state, changesObject)

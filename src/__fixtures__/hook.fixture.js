@@ -1,6 +1,5 @@
-import React from 'react';
-import AccordionWithHoC from '../higher-order-component';
-import {single} from '../shared'
+import React from 'react'
+import AccordionWithHooks from '../Hooks'
 
 const items = [
   {
@@ -36,10 +35,8 @@ const items = [
 ]
 
 export default {
-  component: AccordionWithHoC,
-  props:{
+  component: AccordionWithHooks,
+  props: {
     items: items,
-    stateReducer: single,
-
-  }
+  },
 }
