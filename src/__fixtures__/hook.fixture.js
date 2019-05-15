@@ -1,6 +1,6 @@
 import React from 'react'
 import AccordionWithHooks from '../Hooks'
-import {single} from '../shared'
+import {single} from '../Hooks/shared'
 
 const items = [
   {

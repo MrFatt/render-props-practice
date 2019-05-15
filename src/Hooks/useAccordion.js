@@ -5,7 +5,7 @@ const useAccordion = (customReducer = (s, a) => a.changes) => {
   const [state, dispatch] = useReducer(
     (state, action) => {
       const changes = reducer(state, action)
-      return customReducer(state, {...changes, ...action})
+      return customReducer(state, {changes, ...action})
     },
     {openIndexes: [0]},
   )

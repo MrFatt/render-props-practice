@@ -1,20 +1,19 @@
+import produce from 'immer'
 const OPENING = 'opening'
 const CLOSING = 'closing'
 
-export const reducer = (state, action) => {
-  switch (action.type) {
-    case OPENING:
-      return {
-        openIndexes: [...state.openIndexes, action.value],
-      }
-    case CLOSING:
-      return {
-        openIndexes: state.openIndexes.filter(i => i !== action.value),
-      }
-    default:
-      return state
-  }
-}
+export const reducer = (state, action) =>
+  produce(state, draft => {
+    switch (action.type) {
+      case OPENING:
+        draft.openIndexes.push(action.value)
+        return
+
+      case CLOSING:
+        draft.openIndexes.splice(draft.openIndexes.indexOf(action.value), 1)
+        return
+    }
+  })
 
 export const open = index => ({
   type: OPENING,

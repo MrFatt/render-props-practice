@@ -1,5 +1,5 @@
 import React from 'react'
-import {AccordionButton, AccordionItem, AccordionContents} from '../shared'
+import {AccordionButton, AccordionItem, AccordionContents} from './shared'
 import useAccordion from './useAccordion'
 
 function AccordionUI({items, stateReducer}) {
