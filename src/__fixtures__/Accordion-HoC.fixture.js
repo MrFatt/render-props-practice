@@ -1,5 +1,6 @@
-import React from 'react'
-import Basic from '../basic'
+import React from 'react';
+import AccordionWithHoC from '../basic/higher-order-component';
+import {single} from '../shared'
 
 const items = [
   {
@@ -35,8 +36,10 @@ const items = [
 ]
 
 export default {
-  component: Basic,
-  props: {
+  component: AccordionWithHoC,
+  props:{
     items: items,
-  },
+    stateReducer: single,
+
+  }
 }
