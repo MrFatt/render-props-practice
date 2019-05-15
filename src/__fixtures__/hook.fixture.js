@@ -1,5 +1,6 @@
 import React from 'react'
 import AccordionWithHooks from '../Hooks'
+import {single} from '../shared'
 
 const items = [
   {
@@ -38,5 +39,6 @@ export default {
   component: AccordionWithHooks,
   props: {
     items: items,
+    stateReducer: single,
   },
 }

@@ -97,10 +97,11 @@ const preventClose = (state, changes) =>
     ? {...changes, openIndexes: state.openIndexes}
     : changes
 
-const single = (state, changes) =>
-  changes.type === 'opening'
+const single = (state, changes) => {
+  return changes.type === 'opening'
     ? {...changes, openIndexes: changes.openIndexes.slice(-1)}
     : changes
+}
 
 const combineReducers = (...reducers) => (state, changes) =>
   reducers.reduce((acc, reducer) => reducer(state, acc), changes)

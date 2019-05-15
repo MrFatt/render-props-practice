@@ -1,13 +1,21 @@
 import {useReducer} from 'react'
-import {reducer, updateIndexes} from './duck'
+import {reducer, open, close} from './duck'
 
-const useAccordion = () => {
-  const [state, dispatch] = useReducer(reducer, {openIndexes: [0]})
+const useAccordion = (customReducer = (s, a) => a.changes) => {
+  const [state, dispatch] = useReducer(
+    (state, action) => {
+      const changes = reducer(state, action)
+      return customReducer(state, {...changes, ...action})
+    },
+    {openIndexes: [0]},
+  )
 
   return {
     openIndexes: state.openIndexes,
     handleItemClick: index => {
-      dispatch(updateIndexes(index))
+      state.openIndexes.includes(index)
+        ? dispatch(close(index))
+        : dispatch(open(index))
     },
   }
 }
